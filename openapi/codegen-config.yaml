@@ -1,0 +1,6 @@
+output:
+  serverstub.gen.go
+package: serverstub
+generate:
+  - types
+  - server

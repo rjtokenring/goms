@@ -75,7 +75,7 @@ paths:
   /user/{id}:
     get:
       description: Returns a user based on a single ID, if present
-      operationId: find user by id
+      operationId: findUserById
       parameters:
         - name: id
           in: path

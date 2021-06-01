@@ -8,3 +8,13 @@ Some useful links:
  - go install github.com/rjtokenring/goms
  - package main app should be in the root of the project
  - then add other packages to the module and use them with the complete path (eg import github.com/rjtokenring/goms/stringstxt)
+
+###### **Open Api**
+
+https://github.com/deepmap/oapi-codegen
+
+Steps:
+ - go get github.com/deepmap/oapi-codegen/cmd/oapi-codegen
+ - oapi-codegen will be generated into $GOBIN dir
+ - ./bin/oapi-codegen -generate types,server Openapi/openapi.yaml > Openapi/oapi.gen.go (just generate server stubs)
+ - or: ./bin/oapi-codegen --config openapi/codegen-config.yaml openapi/openapi.yaml
