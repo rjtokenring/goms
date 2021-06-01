@@ -1,7 +1,9 @@
 package main
 
 import (
+	"database/sql"
 	"github.com/labstack/echo/v4"
+	"github.com/rjtokenring/goms/dbaccess"
 	"github.com/rjtokenring/goms/serverstub"
 	"github.com/rjtokenring/goms/stringstxt"
 	"net/http"
@@ -11,14 +13,17 @@ var serverBinding = ":1323"
 var version = "1.0"
 
 func main() {
+	//Init DB before starting web server
+	var dblink = dbaccess.InitDb()
+
 	e := echo.New()
 
-	initGetHandler(e)
+	initGetHandler(e, dblink)
 
 	e.Logger.Fatal(e.Start(serverBinding))
 }
 
-func initGetHandler(e *echo.Echo)  {
+func initGetHandler(e *echo.Echo, db *sql.DB)  {
 	//Base
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Go MS test - version: "+version)
@@ -30,7 +35,7 @@ func initGetHandler(e *echo.Echo)  {
 	})
 
 	//Server genearted stubs with OpenApi spec
-	var implementingStubs = serverstub.GoMsServerImpl{}
+	var implementingStubs = serverstub.GoMsServerImpl{DbLink: db}
 	serverstub.RegisterHandlers(e, &implementingStubs)
 }
 

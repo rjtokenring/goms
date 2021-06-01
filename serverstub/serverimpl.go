@@ -1,6 +1,7 @@
 package serverstub
 
 import (
+	"database/sql"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	"strconv"
@@ -8,7 +9,7 @@ import (
 )
 
 type GoMsServerImpl struct {
-
+	DbLink *sql.DB
 }
 
 func (impl *GoMsServerImpl) DeleteUser(ctx echo.Context, id int64) error  {

@@ -1,3 +1,4 @@
+###### **Go Ms**
 
 Some useful links:
  - https://golang.org/doc/code
@@ -18,3 +19,7 @@ Steps:
  - oapi-codegen will be generated into $GOBIN dir
  - ./bin/oapi-codegen -generate types,server Openapi/openapi.yaml > Openapi/oapi.gen.go (just generate server stubs)
  - or: ./bin/oapi-codegen --config openapi/codegen-config.yaml openapi/openapi.yaml
+
+###### **DB SUPPORT: RAMSQL**
+
+- go install github.com/proullon/ramsql
